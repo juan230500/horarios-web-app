@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Link, Route, Routes } from "react-router-dom";
+import ManagerPage from "./components/ManagerPage";
+import EmployeePage from "./components/EmployeePage";
+import styled from "styled-components";
+import { Button } from "@mui/material";
+
+const StyledLink = styled(Link)`
+  font-size: 24px;
+  margin: 0 8px;
+`;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav>
+        <StyledLink to="/schedule">
+          <Button variant="contained">Horarios</Button>
+        </StyledLink>
+        <StyledLink to="/emloyee">
+          <Button variant="contained">Marcas</Button>
+        </StyledLink>
+      </nav>
+      <Routes>
+        <Route path="/schedule" element={<ManagerPage />} />
+        <Route path="/emloyee" element={<EmployeePage />} />
+      </Routes>
     </div>
   );
 }
